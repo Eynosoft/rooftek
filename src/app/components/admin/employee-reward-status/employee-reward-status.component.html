@@ -1,0 +1,181 @@
+<div class="page-header">
+    <h3 class="page-title">
+        Employee Reward Points Status
+    </h3>
+</div>
+
+<div class="row">
+    <div class="col-9 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Reward Point Status</h4>
+                <canvas baseChart [chartType]="'bar'" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [colors]="barChartColors"></canvas>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 grid-margin counter_card counter_card_with_Pic emp-rewStatus-counter mb-2">
+
+        <div class="card bg-card-white card-img-holder mb-4">
+            <div class="card-body py-3">
+                <div class="countThumb">
+                    <img src="assets/images/icons/Total-Points.png" alt="image">
+                </div>
+                <div class="countInfo">
+                    <h2 class="mb-0">1,250</h2>
+                    <h4 class="font-weight-normal mb-0">Total Reward Points</h4>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card bg-card-white card-img-holder mb-4">
+            <div class="card-body py-3">
+                <div class="countThumb">
+                    <img src="assets/images/icons/Unclaimed-Points.png" alt="image">
+                </div>
+                <div class="countInfo">
+                    <h2 class="mb-0">800</h2>
+                    <h4 class="font-weight-normal mb-0">Total Unclaimed Points</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="card bg-card-white card-img-holder mb-4">
+            <div class="card-body py-3">
+                <div class="countThumb">
+                    <img src="assets/images/icons/Claimed-Points.png" alt="image">
+                </div>
+                <div class="countInfo">
+                    <h2 class="mb-0">450</h2>
+                    <h4 class="font-weight-normal mb-0">Total Claimed Points</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="card bg-card-white card-img-holder">
+            <div class="card-body py-3">
+                <div class="countThumb">
+                    <img src="assets/images/icons/Awaiting-Payment.png" alt="image">
+                </div>
+                <div class="countInfo">
+                    <h2 class="mb-0">00</h2>
+                    <h4 class="font-weight-normal mb-0">Awaiting Payment</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 grid-margin counter_card counter_card_with_Pic reward-point-claim-row mb-4">
+        <div class="card">
+            <div class="card-body py-0 px-0">
+
+                <div class="col-md-4 card bg-card-white card-img-holder">
+                    <div class="card-body py-3">
+                        <div class="countThumb">
+                            <img src="assets/images/icons/Claimed-Points.png" alt="image">
+                        </div>
+                        <div class="countInfo">
+                            <h2 class="mb-0">800</h2>
+                            <h4 class="font-weight-normal mb-0">Total Unclaimed Points</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 card bg-card-white card-img-holder bg-light-blue">
+                    <div class="card-body py-3">
+                        <div class="countThumb">
+                            <img src="assets/images/icons/point-worth.png" alt="image">
+                        </div>
+                        <div class="countInfo">
+                            <h2 class="mb-0">$150</h2>
+                            <h4 class="font-weight-normal mb-0">Points Worth ($)</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 card bg-card-white card-img-holder bg-light-pink">
+                    <div class="card-body py-3">
+                        <div class="countInfo">
+                            <h3 class="font-weight-normal mb-0">How to Redeem your Points</h3>
+                            <p class="mt-1 mb-0">Add products and events to your cart. Physical products ordered will be shipped to your franchising location for pickup.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card py-2 px-2">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Search By</h4>
+
+                <form class="forms-sample">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Search by Employee</label>
+                                <input type="text" class="form-control" id="" placeholder="Jacob Milne">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Search by Employee ID</label>
+                                <input type="text" class="form-control" id="" placeholder="EM-05487">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary mt-3 mr-2">Search</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row px-2 mt-3 searchby-admin-wrapper">
+                        <div class="col-md-12 search-head">
+                            <h3 class="mb-1">Jacob Milne</h3>
+                            <p class="mb-3">EMPLOYEE ID: EM-05487</p>
+                        </div>
+                        <div class="col-md-4 stretch-card grid-margin counter_card">
+                            <div class="card bg-light-blue card-img-holder text-white">
+                                <div class="card-body">
+                                    <h4 class="font-weight-normal mb-2">Total Points</h4>
+                                    <h2 class="mb-0">10,000</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 stretch-card grid-margin counter_card">
+                            <div class="card bg-light-blue card-img-holder text-white">
+                                <div class="card-body">
+                                    <h4 class="font-weight-normal mb-2">Total Claimed Points</h4>
+                                    <h2 class="mb-0">6,000</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 stretch-card grid-margin counter_card">
+                            <div class="card bg-light-pink card-img-holder text-white">
+                                <div class="card-body">
+                                    <h4 class="font-weight-normal mb-2">Total Unclaimed Points</h4>
+                                    <h2 class="mb-0">4,000</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

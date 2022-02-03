@@ -1,0 +1,174 @@
+<div class="page-header">
+    <h3 class="page-title">
+        Create Event
+    </h3>
+
+    <div class="filterBy_col">
+        <a class="btn btn-danger btn-sm"  routerLink="/create-event-category" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-plus"></i> Add Category</a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body table_view_wrapper py-4 px-4">
+                <!--<h4 class="card-title">Points Status</h4>-->
+
+                <form class="forms-sample">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Event  Title  <span>*</span></label>
+                                <input type="text" class="form-control" id="" placeholder="Enter event title">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Estimated Point Cost  <span>*</span></label>
+                                <input type="text" class="form-control" id="" placeholder="Enter estimated point cost">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Start Date <span>*</span></label>
+                                <input type="date" class="form-control" id="pointValue" placeholder="Choose date">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Start Time  <span>*</span></label>
+                                <input type="time" class="form-control" id="pointValue" placeholder="00:00 AM">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>End Date <span>*</span></label>
+                                <input type="date" class="form-control" id="pointValue" placeholder="Choose date">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>End Time  <span>*</span></label>
+                                <input type="time" class="form-control" id="pointValue" placeholder="00:00 AM">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Event Location <span>*</span></label>
+                                <textarea class="form-control" id="notes" rows="6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Country <span>*</span></label>
+                                <select class="form-control" id="selectEmployee">
+                                    <option>--Select Country--</option>
+                                    <option>United State</option>
+                                    <option>UK</option>
+                                    <option>India</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>State  <span>*</span></label>
+                                <select class="form-control" id="selectEmployee">
+                                    <option>--Select State--</option>
+                                    <option>Alabama</option>
+                                    <option>Alaska</option>
+                                    <option>Arizona</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>City  <span>*</span></label>
+                                <select class="form-control" id="selectEmployee">
+                                    <option>--Select City--</option>
+                                    <option>New York</option>
+                                    <option>Los Angeles</option>
+                                    <option>Houston</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Event Category <span>*</span></label>
+                                <select class="form-control" id="selectEmployee">
+                                    <option>--Select Category--</option>
+                                    <option>Category name</option>
+                                    <option>Category name</option>
+                                    <option>Category name</option>
+                                    <option>Category name</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Total Seats  <span>*</span></label>
+                                <input type="number" class="form-control" id="pointValue" placeholder="500 Seats">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Description <span>*</span></label>
+                                <textarea class="form-control" id="notes" rows="8"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Upload Event Gallery Images <span>*</span></label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                            <span class="input-group-append">
+                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+
+                <button class="btn btn-dark btn-sm ml-2"><i class="mdi mdi-plus"></i> Add More</button>
+              </span>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary mr-2">Create Event</button>
+                                <button class="btn btn-dark">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

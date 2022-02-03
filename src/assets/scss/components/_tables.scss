@@ -1,0 +1,125 @@
+/* Tables */
+
+.table {
+    margin-bottom: 0;
+    thead {
+        th {
+            border-top: 0;
+            border-bottom-width: 1px;
+            font-family: $type1-medium;
+            font-weight: 600;
+            padding: 0.9rem 0.5rem;
+            vertical-align: middle;
+            background-color: transparent;
+            i {
+                margin-left: 0.325rem;
+            }
+        }
+    }
+    th,
+    td {
+        vertical-align: middle;
+        font-size: $default-font-size;
+        line-height: 1;
+        padding: 0.6rem 0.5rem;
+        img {
+            width: 36px;
+            height: 36px;
+            border-radius: 100%;
+        }
+        .badge {
+            margin-bottom: 0;
+        }
+        a {
+            color: #000;
+        }
+        .action_bar {
+            font-size: 18px;
+            a {
+                margin-right: 10px;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        span.event-date {
+            color: rgba(0,0,0,0.5);
+        }
+    }
+    &.table-borderless {
+        border: none;
+        tr,
+        td,
+        th {
+            border: none;
+        }
+    }
+    tr {
+        &:nth-child(odd) {
+            background-color: #f8f8f8;
+        }
+        &:nth-child(even) {
+            background-color: #eeeeee;
+        }
+    }
+}
+
+
+/* Tables Default */
+
+.table_default {
+    margin-bottom: 0;
+    thead {
+        th {
+            border-top: 0;
+            border-bottom-width: 0px;
+        }
+    }
+    th {
+        font-size: 17px;
+        text-transform: uppercase;
+    }
+    td {
+        border-top: 0px;
+        font-size: 13px;
+        text-align: center;
+        line-height: 1.2;
+        h4 {
+            margin-top: 15px;
+            margin-bottom: 0px;
+            font-weight: 600;
+            color: $blue;
+        }
+        &:nth-child(1) {
+            text-align: left;
+        }
+    }
+    tr {
+        &:nth-child(odd) {
+            background-color: transparent;
+        }
+        &:nth-child(even) {
+            background-color: transparent;
+        }
+        &.odd {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ebebeb;
+        }
+        &.even {
+            background-color: #eeeeee;
+            border-bottom: 1px solid #ebebeb;
+        }
+        &.br_1 {
+            border-bottom: 1px solid #ebebeb;
+        }
+    }
+}
+
+
+.event-listing-table {
+    .table {
+        th.nameCol {
+            width: 20%;
+        }
+    }
+}
