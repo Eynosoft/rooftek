@@ -26,6 +26,8 @@ import { EmployeeRewardStatusComponent } from './components/admin/employee-rewar
 import { EventListingComponent } from './components/admin/event-listing/event-listing.component';
 import { CreateEventComponent } from './components/admin/create-event/create-event.component';
 import { CreateEventCategoryComponent } from './components/admin/create-event-category/create-event-category.component';
+import { CreateProductComponent } from './components/admin/create-product/create-product.component';
+import { CreateProductCategoryComponent } from './components/admin/create-product-category/create-product-category.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { CreateEventCategoryComponent } from './components/admin/create-event-ca
     EmployeeRewardStatusComponent,
     EventListingComponent,
     CreateEventComponent,
-    CreateEventCategoryComponent
+    CreateEventCategoryComponent,
+    CreateProductComponent,
+    CreateProductCategoryComponent
   ],
   imports: [
     BrowserModule,

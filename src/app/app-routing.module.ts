@@ -11,6 +11,8 @@ import { EmployeeRewardStatusComponent } from "./components/admin/employee-rewar
 import { EventListingComponent } from "./components/admin/event-listing/event-listing.component";
 import { CreateEventComponent } from "./components/admin/create-event/create-event.component";
 import { CreateEventCategoryComponent } from "./components/admin/create-event-category/create-event-category.component";
+import { CreateProductComponent } from "./components/admin/create-product/create-product.component";
+import { CreateProductCategoryComponent } from "./components/admin/create-product-category/create-product-category.component";
 
 
 const routes: Routes = [
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: "event-listing", component: EventListingComponent },
   { path: "create-event", component: CreateEventComponent },
   { path: "create-event-category", component: CreateEventCategoryComponent },
+  { path: "create-product", component: CreateProductComponent },
+  { path: "create-product-category", component: CreateProductCategoryComponent },
 
   {
     path: "basic-ui",
