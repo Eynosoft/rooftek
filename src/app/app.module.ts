@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-
+import { HttpClientModule } from '@angular/common/http'; 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule, ThemeService } from 'ng2-charts';
@@ -28,6 +28,8 @@ import { CreateEventComponent } from './components/admin/create-event/create-eve
 import { CreateEventCategoryComponent } from './components/admin/create-event-category/create-event-category.component';
 import { CreateProductComponent } from './components/admin/create-product/create-product.component';
 import { CreateProductCategoryComponent } from './components/admin/create-product-category/create-product-category.component';
+import { ValuesPipe } from './pipes/values.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -51,16 +53,19 @@ import { CreateProductCategoryComponent } from './components/admin/create-produc
     CreateEventComponent,
     CreateEventCategoryComponent,
     CreateProductComponent,
-    CreateProductCategoryComponent
+    CreateProductCategoryComponent,
+    ValuesPipe
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    NgxPaginationModule
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]

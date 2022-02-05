@@ -73,7 +73,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor=" let employee of employeeData | paginate : {
+                                    itemsPerPage: pageSize,
+                                    currentPage: page,
+                                    totalItems: count
+                                };
+                                let i = index">
+                                <td>
+                                    <span class="checkbox_item">
+                                        <input type="checkbox" value="" />
+                                    </span>
+                                </td>
+                                <td><strong>{{employee.FirstName}} {{employee.LastName}}</strong></td>
+                                <td>{{employee.HireDate}}</td>
+                                <td>24</td>
+                                <td>10</td>
+                                <td>1,200</td>
+                                <td><label class="text-color-red">$1,200</label></td>
+                                <td>
+                                    <span class="action_bar">
+                                        <a  routerLink="/employee-reward-status/{{employee.Id}}" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
+                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true" (click)="editEmployee(employee.Id)"></i></a>
+                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true" (click)="deleteEmployee(employee.Id)"></i></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <!--<tr>
                                 <td>
                                     <span class="checkbox_item">
                                         <input type="checkbox" value="" />
@@ -345,32 +370,20 @@
 
                                     </span>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
+                            </tr>-->
                         </tbody>
                     </table>
 
-                    <ngb-pagination [collectionSize]="40" [pageSize]="10" [page]="1" aria-label="Default pagination" class="d-flex pagination_wrapper"></ngb-pagination>
+                    <!--<ngb-pagination [collectionSize]="40" [pageSize]="10" [page]="1" aria-label="Default pagination" class="d-flex pagination_wrapper"></ngb-pagination>-->
+                    <div class="d-flex justify-content-center">
+                        <pagination-controls
+                            previousLabel="Prev"
+                            nextLabel="Next"
+                            [responsive]="true"
+                            (pageChange)="handlePageChange($event)"
+                        >
+                        </pagination-controls>
+                      </div>
                 </div>
 
             </div>
