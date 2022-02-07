@@ -13,7 +13,8 @@ import { CreateEventComponent } from "./components/admin/create-event/create-eve
 import { CreateEventCategoryComponent } from "./components/admin/create-event-category/create-event-category.component";
 import { CreateProductComponent } from "./components/admin/create-product/create-product.component";
 import { CreateProductCategoryComponent } from "./components/admin/create-product-category/create-product-category.component";
-
+import { AddEmployeeComponent } from "./components/admin/add-employee/add-employee.component";
+import { EditEmployeeComponent } from "./components/admin/edit-employee/edit-employee.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/user-pages/login", pathMatch: "full" },
@@ -25,11 +26,14 @@ const routes: Routes = [
   { path: "add-points", component: AddPointsComponent },
   { path: "employee-listing", component: EmployeeListingComponent },
   { path: "employee-reward-status", component: EmployeeRewardStatusComponent },
+  { path: "add-employee", component: AddEmployeeComponent },
+  { path: "edit-employee", component: EditEmployeeComponent },
   { path: "event-listing", component: EventListingComponent },
   { path: "create-event", component: CreateEventComponent },
   { path: "create-event-category", component: CreateEventCategoryComponent },
   { path: "create-product", component: CreateProductComponent },
   { path: "create-product-category", component: CreateProductCategoryComponent },
+  
 
   {
     path: "basic-ui",

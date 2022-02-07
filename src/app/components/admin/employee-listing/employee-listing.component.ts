@@ -13,7 +13,7 @@ export class EmployeeListingComponent implements OnInit {
   employeeData: any;
   currentIndex = -1;
   title = '';
-  page = 2;
+  page = 1;
   count = 0;
   pageSize  = 10;
   pageSizes  = [5, 10, 15];
@@ -35,9 +35,9 @@ export class EmployeeListingComponent implements OnInit {
     if (searchTitle) {
       params['title'] = searchTitle;
     }
-
+    console.log()
     if (page) {
-      params['page'] = page - 1;
+      params['page'] = page;
     }
 
     if (pageSize) {
@@ -59,11 +59,8 @@ export class EmployeeListingComponent implements OnInit {
     this.employeeService.fetchEmployee(params)
       .subscribe(
         res => {
-          console.log(res);
-          const { employee, totalItems } = res;
-          this.employeeData = employee;
-          this.count = totalItems;
-          console.log(res);
+          this.employeeData = res.rows;
+          this.count = res.count;
         },
         err => {
           console.log(err);
@@ -108,7 +105,34 @@ export class EmployeeListingComponent implements OnInit {
   }
   /**********************************************************************************/
   /**********************************************************************************/
-  setActiveTutorial(employee:any):void {
+  /**
+   * Edit employee data by if
+   * 
+   * @param (number)
+   * @returns (json)
+  */
+  editEmployee(id:number):void {
 
   }
+  /**********************************************************************************/
+  /**********************************************************************************/
+  /**
+   * Delete employee by id
+   * 
+   * @param (number)
+   * @returns (json)
+  */
+   deleteEmployee(id:number) :void {
+    this.employeeService.deleteEmployeeById(id)
+      .subscribe(
+        res => {
+          this.employeeData = res.rows;
+          this.count = res.count;
+        },
+        err => {
+          console.log(err);
+        });
+   }
+  /**********************************************************************************/
+  /**********************************************************************************/
 }

@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~10.1.6",
     "@angular/router": "~10.1.6",
     "@mdi/font": "^5.9.55",
-    "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@ng-bootstrap/ng-bootstrap": "^6.2.0",
     "bootstrap": "^4.5.3",
     "chart.js": "^2.9.3",
     "compass-mixins": "^0.12.10",
@@ -29,10 +29,13 @@
     "jquery": "^3.5.1",
     "material-design-icons": "^3.0.1",
     "ng2-charts": "^2.4.2",
+    "ng2-date-picker": "^13.1.1",
     "ngx-pagination": "^5.1.1",
     "node-sass": "^4.14.1",
     "rxjs": "~6.6.3",
+    "sweetalert2": "^11.4.0",
     "tslib": "^2.0.3",
+    "validation-utils": "^7.0.0",
     "zone.js": "~0.11.1"
   },
   "devDependencies": {

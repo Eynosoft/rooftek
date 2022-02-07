@@ -1,0 +1,184 @@
+<div class="page-header">
+    <h3 class="page-title">
+        Add Employee
+    </h3>
+</div>
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body table_view_wrapper py-4 px-4">
+                <!--<h4 class="card-title">Points Status</h4>-->
+
+                <form [formGroup]="frmAddEmployee" (ngSubmit)="onSubmitEmployee()" class="forms-sample">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Call Tools Agent Id</label>
+                                <input type="text" class="form-control" formControlName ="callToolsAgentId" id="callToolsAgentId" placeholder="Enter Call Tools Agent Id">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Job Nimbus Employee Id</label>
+                                <input type="text" class="form-control" formControlName ="jobNimbusContactId" id="jobNimbusContactId" placeholder="Enter Job Nimbus Contact Id">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Referral Id</label>
+                                <input type="text" class="form-control" formControlName ="referralId" id="referralId" placeholder="Referral Id">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Manager Id</label>
+                                <input type="text" class="form-control" formControlName ="managerId" id="managerId" placeholder="Enter Manager Id">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" formControlName ="firstName" id="firstName" placeholder="Enter First Name" [ngClass]="{'is-invalid': submitted && f.firstName.errors}">
+                                <div *ngIf="submitted && f.firstName.errors" class="text-danger">
+                                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" formControlName ="lastName" id="lastName" placeholder="Enter Last Name" [ngClass]="{'is-invalid': submitted && f.lastName.errors}">
+                                <div *ngIf="submitted && f.lastName.errors" class="text-danger">
+                                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Mobile Number</label>
+                                <input type="text" class="form-control" formControlName ="primaryNumber" id="primaryNumber" placeholder="Enter Primary Number">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Home Number</label>
+                                <input type="text" class="form-control" formControlName ="secondaryNumber" id="secondaryNumber" placeholder="Enter Secondary Number">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Office Number</label>
+                                <input type="text" class="form-control" formControlName ="tertiaryNumber" id="tertiaryNumber" placeholder="Enter Tertiary Number">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Work Email</label>
+                                <input type="text" class="form-control" formControlName ="workEmail" id="workEmail" placeholder="Enter Work Email">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Personal Email</label>
+                                <input type="text" class="form-control" formControlName ="personalEmail" id="personalEmail" placeholder="Enter Personal Email">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Hire Date</label>
+                                <input type="text" class="form-control" formControlName ="hireDate" id="hireDate" placeholder="Enter Hire Date yyyy-mm-dd" [(ngModel)]="modelHDate" ngbDatepicker #hireDate="ngbDatepicker" [ngClass]="{'is-invalid': submitted && f.hireDate.errors}">
+                                <div *ngIf="submitted && f.hireDate.errors" class="text-danger">
+                                    <div *ngIf="f.hireDate.errors.required">Hire Date is required</div>
+                                </div>
+                                <button class="btn btn-outline-secondary calendar" (click)="hireDate.toggle()" type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <input type="text" class="form-control" formControlName ="companyName" id="companyName" placeholder="Enter Company Name">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Franchise Id</label>
+                                <input type="text" class="form-control" formControlName ="franchiseId" id="franchiseId" placeholder="Enter Franchise Id" [ngClass]="{'is-invalid': submitted && f.franchiseId.errors}">
+                                <div *ngIf="submitted && f.franchiseId.errors" class="text-danger">
+                                    <div *ngIf="f.franchiseId.errors.required">Franchise Id is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Role Id</label>
+                                <input type="text" class="form-control" formControlName ="roleId" id="roleId" placeholder="Enter Role Id" [ngClass]="{'is-invalid': submitted && f.roleId.errors}">
+                                <div *ngIf="submitted && f.roleId.errors" class="text-danger">
+                                    <div *ngIf="f.roleId.errors.required">Role Id is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Priority Status Id</label>
+                                <input type="text" class="form-control" formControlName ="priorityStatusId" id="priorityStatusId" placeholder="Enter Priority Status Id">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Address</label>
+                                <textarea class="form-control" formControlName="address" id="address" rows="8"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" class="form-control" formControlName ="city" id="city" placeholder="Enter City">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>State</label>
+                                <input type="text" class="form-control" formControlName ="state" id="state" placeholder="Enter State">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Zip</label>
+                                <input type="text" class="form-control" formControlName ="zip" id="zip" placeholder="Enter Zip">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary mr-2">Add Employee</button>
+                                <button class="btn btn-dark">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

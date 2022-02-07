@@ -30,6 +30,8 @@ import { CreateProductComponent } from './components/admin/create-product/create
 import { CreateProductCategoryComponent } from './components/admin/create-product-category/create-product-category.component';
 import { ValuesPipe } from './pipes/values.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component'; 
+import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component'; 
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CreateEventCategoryComponent,
     CreateProductComponent,
     CreateProductCategoryComponent,
-    ValuesPipe
+    ValuesPipe,
+    AddEmployeeComponent,
+    EditEmployeeComponent
   ],
   imports: [
     HttpClientModule,
