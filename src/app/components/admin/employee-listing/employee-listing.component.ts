@@ -17,7 +17,7 @@ export class EmployeeListingComponent implements OnInit {
   count = 0;
   pageSize  = 10;
   pageSizes  = [5, 10, 15];
-  constructor(private employeeService: EmployeesService) { }
+  constructor(private employeeService: EmployeesService, private router: Router) { }
 
   ngOnInit(): void {
     this.retrieveEmployees();
@@ -102,17 +102,6 @@ export class EmployeeListingComponent implements OnInit {
   searchTitle(): void {
     this.page = 1;
     this.retrieveEmployees();
-  }
-  /**********************************************************************************/
-  /**********************************************************************************/
-  /**
-   * Edit employee data by if
-   * 
-   * @param (number)
-   * @returns (json)
-  */
-  editEmployee(id:number):void {
-
   }
   /**********************************************************************************/
   /**********************************************************************************/

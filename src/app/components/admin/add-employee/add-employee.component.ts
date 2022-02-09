@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class AddEmployeeComponent implements OnInit {
   modelHDate: NgbDateStruct;
-  
+  tmphireDate: any;
   date: {year: number, month: number};
   frmAddEmployee: any = {
     callToolsAgentId: null,
@@ -139,7 +139,7 @@ export class AddEmployeeComponent implements OnInit {
     if(this.frmAddEmployee.invalid) {
       return;
     }
-
+    this.tmphireDate = hireDate.year+'-'+ hireDate.month +'-'+ hireDate.day; 
     this.employeeService.addEmployee(callToolsAgentId,
       jobNimbusContactId,
       referralId,
@@ -151,7 +151,7 @@ export class AddEmployeeComponent implements OnInit {
       tertiaryNumber,
       workEmail,
       personalEmail,
-      hireDate,
+      this.tmphireDate,
       companyName,
       franchiseId,
       roleId,
@@ -179,9 +179,12 @@ export class AddEmployeeComponent implements OnInit {
         
       },
       err => {
-        console.log('err='+err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.statusText
+        })
         this.errorMessage = err.error.message;
-        
       }
     )
   }

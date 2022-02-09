@@ -6,9 +6,9 @@ export interface Employee {
     managerId: string;
     firstName: string;
     lastName: string;
-    primaryNumber: number;
-    secondaryNumber: number;
-    tertiaryNumber: number;
+    primaryNumber: string;
+    secondaryNumber: string;
+    tertiaryNumber: string;
     workEmail: string;
     personalEmail: string;
     hireDate: string;

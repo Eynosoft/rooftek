@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: "employee-listing", component: EmployeeListingComponent },
   { path: "employee-reward-status", component: EmployeeRewardStatusComponent },
   { path: "add-employee", component: AddEmployeeComponent },
-  { path: "edit-employee", component: EditEmployeeComponent },
+  { path: "edit-employee/:id", component: EditEmployeeComponent },
   { path: "event-listing", component: EventListingComponent },
   { path: "create-event", component: CreateEventComponent },
   { path: "create-event-category", component: CreateEventCategoryComponent },

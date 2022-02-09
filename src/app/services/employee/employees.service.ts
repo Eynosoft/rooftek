@@ -57,6 +57,17 @@ export class EmployeesService {
   /**********************************************************************************/
   /**********************************************************************************/
   /**
+   * Fetch employee records by id
+   * 
+   * @param (any)
+   * @returns (object)
+   */
+   fetchEmployeeById(id: any): Observable<any> {
+    return this.httpClient.get<any>(RESTAPI+'/employees/'+id).pipe(catchError(this.errorHandler)) 
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
+  /**
    * Delete employee by id
    * 
    * @param (id)
@@ -143,6 +154,63 @@ export class EmployeesService {
       state,
       zip},httpOptions);
   }
+  /**********************************************************************************/
+  /**********************************************************************************/
+  /**
+   * Edit employee record
+   * 
+   * @param (formdata)
+   * @returns (json)
+   */
+   editEmployee(id:any,
+    callToolsAgentId: string,
+    jobNimbusContactId: string,
+    referralId: string,
+    managerId: string,
+    firstName: string,
+    lastName: string,
+    primaryNumber: any,
+    secondaryNumber: any,
+    tertiaryNumber: any,
+    workEmail: string,
+    personalEmail: any,
+    hireDate:any,      
 
-  
+    companyName: string,
+    franchiseId: string,
+    roleId: string,
+    priorityStatusId: string,
+    address: string,
+    city: string,
+    state: string,
+    zip: any): Observable<any> {
+    
+    if(typeof hireDate == 'undefined') {
+      hireDate = '';
+    }  
+    
+    return this.httpClient.put(RESTAPI + '/employees/'+id,{
+      callToolsAgentId,
+      jobNimbusContactId,
+      referralId,
+      managerId,
+      firstName,
+      lastName,
+      primaryNumber,
+      secondaryNumber,
+      tertiaryNumber,
+      workEmail,
+      personalEmail,
+      hireDate,      
+      companyName,
+      franchiseId,
+      roleId,
+      priorityStatusId,
+      address,
+      city,
+      state,
+      zip},httpOptions);
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
 }
