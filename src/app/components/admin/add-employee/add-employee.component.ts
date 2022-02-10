@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AbstractControl,FormBuilder,Validators } from '@angular/forms';
 import Validation from 'src/app/utils/validation';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { HttpParams,HttpEventType, HttpResponse } from '@angular/common/http';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeesService } from 'src/app/services/employee/employees.service';
 import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
@@ -50,6 +51,7 @@ export class AddEmployeeComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private employeeService: EmployeesService, private router: Router,private calendar: NgbCalendar) { }
   /**********************************************************************************/
   /**********************************************************************************/
+  
   /**
    * Initializes dates
    * 

@@ -15,6 +15,9 @@ import { CreateProductComponent } from "./components/admin/create-product/create
 import { CreateProductCategoryComponent } from "./components/admin/create-product-category/create-product-category.component";
 import { AddEmployeeComponent } from "./components/admin/add-employee/add-employee.component";
 import { EditEmployeeComponent } from "./components/admin/edit-employee/edit-employee.component";
+import { EventDetailComponent } from "./components/admin/event-detail/event-detail.component";
+import { CartNotificationComponent } from "./components/admin/cart-notification/cart-notification.component";
+import { CartAccessComponent } from "./components/admin/cart-access/cart-access.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/user-pages/login", pathMatch: "full" },
@@ -29,11 +32,13 @@ const routes: Routes = [
   { path: "add-employee", component: AddEmployeeComponent },
   { path: "edit-employee/:id", component: EditEmployeeComponent },
   { path: "event-listing", component: EventListingComponent },
+  { path: "event-detail", component: EventDetailComponent },
   { path: "create-event", component: CreateEventComponent },
   { path: "create-event-category", component: CreateEventCategoryComponent },
   { path: "create-product", component: CreateProductComponent },
   { path: "create-product-category", component: CreateProductCategoryComponent },
-  
+  { path: "cart-notification", component: CartNotificationComponent },
+  { path: "access-cart", component: CartAccessComponent },
 
   {
     path: "basic-ui",
