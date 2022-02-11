@@ -6,11 +6,9 @@
     <div class="filterBy_col">
         <label>Filter by Franchise</label>
         <span class="filterDropdown">
-            <select>
+            <select class="form-control">
                 <option>Select Franchise</option>
-                <option>Franchise 01</option>
-                <option>Franchise 02</option>
-                <option>Franchise 03</option>
+                <option *ngFor ="let franchise of franchiseData" [ngValue]="franchise.Name">{{franchise.Name}}</option>
             </select>
         </span>
     </div>
@@ -25,27 +23,10 @@
 
                 <div class="filter_checkbox_section">
                     <ul class="list-inline filter_listing">
-                        <li><span class="checkbox_item">
-                            <input type="checkbox" value="" />
-                        </span> Franchise name 01</li>
-                        <li><span class="checkbox_item">
-                            <input type="checkbox" value="" />
-                        </span> Franchise name 02</li>
-                        <li><span class="checkbox_item">
-                            <input type="checkbox" value="" />
-                        </span> Franchise name 03</li>
-                        <li><span class="checkbox_item">
-                            <input type="checkbox" value="" />
-                        </span> Franchise name 04</li>
-                        <li><span class="checkbox_item">
-                            <input type="checkbox" value="" />
-                        </span> Franchise name 05</li>
-                        <li><span class="checkbox_item">
-                            <input type="checkbox" value="" />
-                        </span> Franchise name 06</li>
-                        <li><span class="checkbox_item">
-                            <input type="checkbox" value="" />
-                        </span> Franchise name 07</li>
+                        <li *ngFor="let franchise of franchiseData"><span class="checkbox_item">
+                            <input type="checkbox" value="franchise.ID"/>
+                        </span> {{franchise.Name}}</li>
+                        
                     </ul>
                 </div>
             </div>
@@ -66,6 +47,7 @@
                                 <th class="nameCol">Employee Name</th>
                                 <th>Joining Date</th>
                                 <th>Total Projects</th>
+                                
                                 <th>Running Projects</th>
                                 <th>Total Rewards </th>
                                 <th>Rewards in ($)</th>
@@ -73,7 +55,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor=" let employee of employeeData | paginate : {
+                            <tr *ngFor="let employee of employeeData | paginate : {
                                     itemsPerPage: pageSize,
                                     currentPage: page,
                                     totalItems: count
@@ -98,279 +80,6 @@
                                     </span>
                                 </td>
                             </tr>
-                            <!--<tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>Jacob Milne</strong></td>
-                                <td>25/05/2021</td>
-                                <td>24</td>
-                                <td>10</td>
-                                <td>1,200</td>
-                                <td><label class="text-color-red">$1,200</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="/employee-reward-status" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
-                                    </span>
-                                </td>
-                            </tr>-->
                         </tbody>
                     </table>
 

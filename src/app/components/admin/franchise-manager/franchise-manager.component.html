@@ -1,0 +1,75 @@
+<div class="page-header">
+    <h3 class="page-title">
+        All Franchise Manager
+    </h3>
+
+    <div class="filterBy_col">
+        <label>Filter by Franchise Manager</label>
+        <span class="filterDropdown">
+            <select class="form-control" [(ngModel)]="filterTerm">
+                <option>Select Franchise Manager</option>
+                <option *ngFor ="let franchise of franchiseData" [ngValue]="franchise.Name">{{franchise.Name}}</option>
+            </select>
+        </span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body table_view_wrapper">
+                <!--<h4 class="card-title">Recent Info</h4>-->
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="allCheckCol">
+                                    <span class="checkbox_item">
+                                        <input type="checkbox" value="" />
+                                    </span>
+                                </th>
+                                <th class="nameCol">
+                                    Name
+                                </th>
+                                <th>
+                                    Code
+                                </th>
+                                <th>
+                                    Address
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor=" let franchise of franchiseData | filter:filterTerm">
+                                <td>
+                                    <span class="checkbox_item">
+                                        <input type="checkbox" value="{{franchise.Id}}" />
+                                    </span>
+                                </td>
+                                <td>
+                                    {{franchise.Name}}
+                                </td>
+                                <td>
+                                    {{franchise.Code}}
+                                </td>
+                                <td>
+                                    {{franchise.Address}}
+
+                                </td>
+                                <!--<td>
+                                    <span class="action_bar">
+                                        <a routerLink="/franchise-detail" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
+                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                    </span>
+                                </td>-->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<ngb-pagination [collectionSize]="40" [pageSize]="10" [page]="1" aria-label="Default pagination" class="d-flex pagination_wrapper"></ngb-pagination>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

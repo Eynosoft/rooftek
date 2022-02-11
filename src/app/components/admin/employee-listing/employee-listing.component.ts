@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeesService } from 'src/app/services/employee/employees.service';
+import { FranchiseManagerService } from 'src/app/services/franchise-manager/franchise-manager.service';
 import { Employee } from 'src/app/interface/employee';
+import { FranchiseManager } from 'src/app/interface/franchise-manager';
 import { HttpParams,HttpEventType, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,16 +13,21 @@ import { Observable } from 'rxjs';
 })
 export class EmployeeListingComponent implements OnInit {
   employeeData: any;
+  dtOptions: DataTables.Settings = {};
+  franchiseData: any;
+  filterTerm: string;
   currentIndex = -1;
   title = '';
   page = 1;
   count = 0;
   pageSize  = 10;
   pageSizes  = [5, 10, 15];
-  constructor(private employeeService: EmployeesService, private router: Router) { }
+  constructor(private employeeService: EmployeesService, private router: Router, private franchiseManagerService: FranchiseManagerService) { }
 
   ngOnInit(): void {
+    
     this.retrieveEmployees();
+    this.retrieveFranchiseManager();
   }
 
   /**
@@ -61,6 +68,27 @@ export class EmployeeListingComponent implements OnInit {
         res => {
           this.employeeData = res.rows;
           this.count = res.count;
+        },
+        err => {
+          console.log(err);
+        });
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
+  /**
+   * Get all the records of franchise manager
+   * 
+   * @param (any)
+   * @returns (array)
+  */
+   retrieveFranchiseManager(): void {
+    const params = this.getRequestParams(this.title, this.page, this.pageSize);
+    this.franchiseManagerService.fetchFranchiseManager(params)
+      .subscribe(
+        res => {
+          this.franchiseData = res;
+          console.log(Object.keys(this.franchiseData).length);
+          this.count = Object.keys(this.franchiseData).length;
         },
         err => {
           console.log(err);

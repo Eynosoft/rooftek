@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule, ThemeService } from 'ng2-charts';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -31,7 +33,8 @@ import { CreateProductCategoryComponent } from './components/admin/create-produc
 import { ValuesPipe } from './pipes/values.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component'; 
-import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component'; 
+import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
+import { FranchiseManagerComponent } from './components/admin/franchise-manager/franchise-manager.component'; 
 
 @NgModule({
   declarations: [
@@ -58,7 +61,8 @@ import { EditEmployeeComponent } from './components/admin/edit-employee/edit-emp
     CreateProductCategoryComponent,
     ValuesPipe,
     AddEmployeeComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    FranchiseManagerComponent
   ],
   imports: [
     HttpClientModule,
@@ -69,7 +73,9 @@ import { EditEmployeeComponent } from './components/admin/edit-employee/edit-emp
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+    DataTablesModule
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]

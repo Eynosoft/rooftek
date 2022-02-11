@@ -18,7 +18,7 @@ import { EditEmployeeComponent } from "./components/admin/edit-employee/edit-emp
 import { EventDetailComponent } from "./components/admin/event-detail/event-detail.component";
 import { CartNotificationComponent } from "./components/admin/cart-notification/cart-notification.component";
 import { CartAccessComponent } from "./components/admin/cart-access/cart-access.component";
-
+import { FranchiseManagerComponent } from "./components/admin/franchise-manager/franchise-manager.component";
 const routes: Routes = [
   { path: "", redirectTo: "/user-pages/login", pathMatch: "full" },
   { path: "dashboard", component: DashboardComponent },
@@ -39,6 +39,7 @@ const routes: Routes = [
   { path: "create-product-category", component: CreateProductCategoryComponent },
   { path: "cart-notification", component: CartNotificationComponent },
   { path: "access-cart", component: CartAccessComponent },
+  { path: "franchise-manager", component: FranchiseManagerComponent },
 
   {
     path: "basic-ui",
