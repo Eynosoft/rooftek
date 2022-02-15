@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { AgentListingComponent } from "./components/agent/agent-listing/agent-listing.component";
+import { AgentListingComponent } from "./components/admin/agent-listing/agent-listing.component";
 import { AgentDetailComponent } from "./components/agent/agent-detail/agent-detail.component";
 import { UserRoleComponent } from "./components/admin/user-role/user-role.component";
 import { ViewPointsComponent } from "./components/admin/view-points/view-points.component";
@@ -19,6 +19,10 @@ import { EventDetailComponent } from "./components/admin/event-detail/event-deta
 import { CartNotificationComponent } from "./components/admin/cart-notification/cart-notification.component";
 import { CartAccessComponent } from "./components/admin/cart-access/cart-access.component";
 import { FranchiseManagerComponent } from "./components/admin/franchise-manager/franchise-manager.component";
+import { ProductsComponent } from "./components/admin/products/products.component";
+import { ProductDetailComponent } from "./components/admin/product-detail/product-detail.component";
+import { ProductCartComponent } from "./components/admin/product-cart/product-cart.component";
+
 const routes: Routes = [
   { path: "", redirectTo: "/user-pages/login", pathMatch: "full" },
   { path: "dashboard", component: DashboardComponent },
@@ -40,6 +44,9 @@ const routes: Routes = [
   { path: "cart-notification", component: CartNotificationComponent },
   { path: "access-cart", component: CartAccessComponent },
   { path: "franchise-manager", component: FranchiseManagerComponent },
+  { path: "products", component: ProductsComponent },
+  { path: "product-detail", component: ProductDetailComponent },
+  { path: "product-cart", component: ProductCartComponent },
 
   {
     path: "basic-ui",

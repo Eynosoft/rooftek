@@ -6,9 +6,9 @@
     <div class="filterBy_col">
         <label>Filter by Franchise</label>
         <span class="filterDropdown">
-            <select class="form-control">
+            <select [(ngModel)]="query" class="form-control">
                 <option>Select Franchise</option>
-                <option *ngFor ="let franchise of franchiseData" [ngValue]="franchise.Name">{{franchise.Name}}</option>
+                <option *ngFor ="let franchise of franchiseData" [ngValue]="franchise.Id">{{franchise.Name}}</option>
             </select>
         </span>
     </div>
@@ -24,7 +24,7 @@
                 <div class="filter_checkbox_section">
                     <ul class="list-inline filter_listing">
                         <li *ngFor="let franchise of franchiseData"><span class="checkbox_item">
-                            <input type="checkbox" value="franchise.ID"/>
+                            <input type="checkbox" [(ngModel)]="query" value="{{franchise.Id}}"/>
                         </span> {{franchise.Name}}</li>
                         
                     </ul>
@@ -46,6 +46,8 @@
                                 </th>
                                 <th class="nameCol">Employee Name</th>
                                 <th>Joining Date</th>
+                                <th style="display:none;">Franchise Id</th>
+                                
                                 <th>Total Projects</th>
                                 
                                 <th>Running Projects</th>
@@ -55,7 +57,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let employee of employeeData | paginate : {
+                            <tr *ngFor="let employee of employeeData | searchFilter: query | paginate : {
                                     itemsPerPage: pageSize,
                                     currentPage: page,
                                     totalItems: count
@@ -68,6 +70,7 @@
                                 </td>
                                 <td><strong>{{employee.FirstName}} {{employee.LastName}}</strong></td>
                                 <td>{{employee.HireDate}}</td>
+                                <td style="display:none;">{{employee.FranchiseId}}</td>
                                 <td>24</td>
                                 <td>10</td>
                                 <td>1,200</td>

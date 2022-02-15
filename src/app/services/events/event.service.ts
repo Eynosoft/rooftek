@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable,throwError, } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Events } from 'src/app/interface/events';
 
 const RESTAPI = environment.apiUrl;
 const httpOptions = { 
@@ -13,8 +15,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class AgentsService {
-
+export class EventService {
   constructor(private httpClient: HttpClient, private router: Router) { }
   /**
    * Error Handler function
@@ -31,6 +32,7 @@ export class AgentsService {
     }
     return throwError(errorMessage);
   }
+ 
   /**********************************************************************************/
   /**********************************************************************************/
   /**
@@ -45,15 +47,25 @@ export class AgentsService {
   /**********************************************************************************/
   /**********************************************************************************/
   /**
-   * Fetch agents records
+   * Fetch all events records
    * 
    * @param (any)
    * @returns (object)
    */
-   fetchAgents(params: any,roleID: any): Observable<any> {
-    return this.httpClient.get<any>(RESTAPI+'/employees/by-advantage-role/'+roleID).pipe(catchError(this.errorHandler)) 
+  fetchEvents(params: any): Observable<any> {
+    return this.httpClient.get<any>(RESTAPI+'/advantages/purchasables/events/',{ params }).pipe(catchError(this.errorHandler)) 
   }
   /**********************************************************************************/
   /**********************************************************************************/
-
+  /**
+   * Fetch event records by id
+   * 
+   * @param (any)
+   * @returns (object)
+   */
+   fetchEventById(id: any): Observable<any> {
+    return this.httpClient.get<any>(RESTAPI+'/advantages/purchasables/'+id).pipe(catchError(this.errorHandler)) 
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
 }

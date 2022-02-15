@@ -4,6 +4,7 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Roles } from 'src/app/interface/roles';
 
 const RESTAPI = environment.apiUrl;
 const httpOptions = { 
@@ -13,7 +14,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class AgentsService {
+export class RolesService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
   /**
@@ -45,13 +46,13 @@ export class AgentsService {
   /**********************************************************************************/
   /**********************************************************************************/
   /**
-   * Fetch agents records
+   * Fetch user roles records
    * 
    * @param (any)
    * @returns (object)
    */
-   fetchAgents(params: any,roleID: any): Observable<any> {
-    return this.httpClient.get<any>(RESTAPI+'/employees/by-advantage-role/'+roleID).pipe(catchError(this.errorHandler)) 
+   fetchRoles(): Observable<any> {
+    return this.httpClient.get<any>(RESTAPI+'/advantages/roles').pipe(catchError(this.errorHandler)) 
   }
   /**********************************************************************************/
   /**********************************************************************************/

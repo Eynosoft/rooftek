@@ -3,15 +3,15 @@ import { EmployeesService } from 'src/app/services/employee/employees.service';
 import { FranchiseManagerService } from 'src/app/services/franchise-manager/franchise-manager.service';
 import { Employee } from 'src/app/interface/employee';
 import { FranchiseManager } from 'src/app/interface/franchise-manager';
-import { HttpParams,HttpEventType, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-employee-listing',
   templateUrl: './employee-listing.component.html',
   styleUrls: ['./employee-listing.component.scss']
 })
 export class EmployeeListingComponent implements OnInit {
+  searchFilter: any = '';
   employeeData: any;
   dtOptions: DataTables.Settings = {};
   franchiseData: any;
@@ -116,6 +116,19 @@ export class EmployeeListingComponent implements OnInit {
   */
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrieveEmployees();
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
+  /**
+   * Calls on page size change
+   * 
+   * @param (any)
+   * @returns (json)
+  */
+   handleFranchiseChange(event: any): void {
+    this.title = event.target.value;
     this.page = 1;
     this.retrieveEmployees();
   }

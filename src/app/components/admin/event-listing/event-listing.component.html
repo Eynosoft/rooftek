@@ -49,7 +49,7 @@
             <div class="card-body event-listing-table">
                 <!--<h4 class="card-title">Recent Info</h4>-->
                 <div class="table-responsive">
-                    <table class="table">
+                    <table *ngIf="eventsData.length" datatable [dtOptions]="dtOptions" class="table row-border hover">
                         <thead>
                             <tr>
                                 <th class="allCheckCol">
@@ -67,253 +67,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let events of eventsData">
                                 <td>
                                     <span class="checkbox_item">
                                         <input type="checkbox" value="" />
                                     </span>
                                 </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
+                                <td><strong>{{events.Name}}</strong></td>
+                                <td><span class="event-date">{{events.StartDate | customDate}}</span></td>
+                                <td><span class="event-date">{{events.EndDate | customDate}}</span></td>
                                 <td>50</td>
-                                <td>50/500</td>
+                                <td>{{events.Quantity}}</td>
                                 <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
                                 <td>
                                     <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
+                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" (click)="viewEvent(events.Id)" title="View"><i class="mdi mdi-eye"></i></a>
                                         <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        <!--<a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>-->
                                     </span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td>50</td>
-                                <td>50/500</td>
-                                <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td>50</td>
-                                <td>50/500</td>
-                                <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td>50</td>
-                                <td>50/500</td>
-                                <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td>50</td>
-                                <td>50/500</td>
-                                <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td>50</td>
-                                <td>50/500</td>
-                                <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td>50</td>
-                                <td>50/500</td>
-                                <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td>50</td>
-                                <td>50/500</td>
-                                <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td>50</td>
-                                <td>50/500</td>
-                                <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td>50</td>
-                                <td>50/500</td>
-                                <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="checkbox_item">
-                                        <input type="checkbox" value="" />
-                                    </span>
-                                </td>
-                                <td><strong>National Seminar</strong></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td><span class="event-date">Wed, Dec 17,2021<br/>
-                                    (7:30 PM)</span></td>
-                                <td>50</td>
-                                <td>50/500</td>
-                                <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
-                                <td>
-                                    <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        <a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    </span>
-                                </td>
-                            </tr>
-
                         </tbody>
-                    </table>
-
-                    <ngb-pagination [collectionSize]="40" [pageSize]="10" [page]="1" aria-label="Default pagination" class="d-flex pagination_wrapper"></ngb-pagination>
+                        </table>
                 </div>
 
             </div>

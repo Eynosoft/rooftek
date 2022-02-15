@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule, ThemeService } from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DataTablesModule } from 'angular-datatables';
+import { DatePipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -18,7 +19,7 @@ import { TodoComponent } from './apps/todo-list/todo/todo.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ContentAnimateDirective } from './shared/directives/content-animate.directive';
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
-import { AgentListingComponent } from './components/agent/agent-listing/agent-listing.component';
+import { AgentListingComponent } from './components/admin/agent-listing/agent-listing.component';
 import { UserRoleComponent } from './components/admin/user-role/user-role.component';
 import { ViewPointsComponent } from './components/admin/view-points/view-points.component';
 import { AgentDetailComponent } from './components/agent/agent-detail/agent-detail.component';
@@ -34,7 +35,13 @@ import { ValuesPipe } from './pipes/values.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component'; 
 import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
-import { FranchiseManagerComponent } from './components/admin/franchise-manager/franchise-manager.component'; 
+import { FranchiseManagerComponent } from './components/admin/franchise-manager/franchise-manager.component';
+import { CustomDatePipe } from './pipes/custom-date.pipe';
+import { ListFilterPipe } from './pipes/list-filter.pipe';
+import { ProductsComponent } from './components/admin/products/products.component';
+import { ProductDetailComponent } from './components/admin/product-detail/product-detail.component';
+import { ProductCartComponent } from './components/admin/product-cart/product-cart.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';  
 
 @NgModule({
   declarations: [
@@ -62,7 +69,13 @@ import { FranchiseManagerComponent } from './components/admin/franchise-manager/
     ValuesPipe,
     AddEmployeeComponent,
     EditEmployeeComponent,
-    FranchiseManagerComponent
+    FranchiseManagerComponent,
+    CustomDatePipe,
+    ListFilterPipe,
+    ProductsComponent,
+    ProductDetailComponent,
+    ProductCartComponent,
+    SearchFilterPipe
   ],
   imports: [
     HttpClientModule,
@@ -75,9 +88,10 @@ import { FranchiseManagerComponent } from './components/admin/franchise-manager/
     ChartsModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    DataTablesModule
+    DataTablesModule,
+    
   ],
-  providers: [ThemeService],
+  providers: [ThemeService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
