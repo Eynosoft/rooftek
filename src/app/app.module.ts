@@ -1,20 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'; 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule, ThemeService } from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DataTablesModule } from 'angular-datatables';
 import { DatePipe } from '@angular/common';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { TodoComponent } from './apps/todo-list/todo/todo.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { ContentAnimateDirective } from './shared/directives/content-animate.directive';
@@ -41,7 +43,7 @@ import { ListFilterPipe } from './pipes/list-filter.pipe';
 import { ProductsComponent } from './components/admin/products/products.component';
 import { ProductDetailComponent } from './components/admin/product-detail/product-detail.component';
 import { ProductCartComponent } from './components/admin/product-cart/product-cart.component';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';  
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -91,7 +93,12 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     DataTablesModule,
     
   ],
-  providers: [ThemeService,DatePipe],
-  bootstrap: [AppComponent]
+  providers: [ThemeService,DatePipe,{
+    provide : HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi   : true,
+  }],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

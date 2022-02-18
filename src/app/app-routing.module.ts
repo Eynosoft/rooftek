@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AuthGuard } from "./services/auth.guard";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AgentListingComponent } from "./components/admin/agent-listing/agent-listing.component";
 import { AgentDetailComponent } from "./components/agent/agent-detail/agent-detail.component";
@@ -22,31 +23,31 @@ import { FranchiseManagerComponent } from "./components/admin/franchise-manager/
 import { ProductsComponent } from "./components/admin/products/products.component";
 import { ProductDetailComponent } from "./components/admin/product-detail/product-detail.component";
 import { ProductCartComponent } from "./components/admin/product-cart/product-cart.component";
-
+import { LoginComponent } from "./user-pages/login/login.component";
 const routes: Routes = [
   { path: "", redirectTo: "/user-pages/login", pathMatch: "full" },
-  { path: "dashboard", component: DashboardComponent },
-  { path: "agent-listing", component: AgentListingComponent },
-  { path: "user-role", component: UserRoleComponent },
-  { path: "view-points", component: ViewPointsComponent },
-  { path: "agent-detail", component: AgentDetailComponent },
-  { path: "add-points", component: AddPointsComponent },
-  { path: "employee-listing", component: EmployeeListingComponent },
-  { path: "employee-reward-status", component: EmployeeRewardStatusComponent },
-  { path: "add-employee", component: AddEmployeeComponent },
-  { path: "edit-employee/:id", component: EditEmployeeComponent },
-  { path: "event-listing", component: EventListingComponent },
-  { path: "event-detail", component: EventDetailComponent },
-  { path: "create-event", component: CreateEventComponent },
-  { path: "create-event-category", component: CreateEventCategoryComponent },
-  { path: "create-product", component: CreateProductComponent },
-  { path: "create-product-category", component: CreateProductCategoryComponent },
-  { path: "cart-notification", component: CartNotificationComponent },
-  { path: "access-cart", component: CartAccessComponent },
-  { path: "franchise-manager", component: FranchiseManagerComponent },
-  { path: "products", component: ProductsComponent },
-  { path: "product-detail", component: ProductDetailComponent },
-  { path: "product-cart", component: ProductCartComponent },
+  { path: "dashboard", component: DashboardComponent,canActivate: [AuthGuard],data:{title:'Advanced Idx Mls Solution'}},
+  { path: "agent-listing", component: AgentListingComponent,canActivate: [AuthGuard] },
+  { path: "user-role", component: UserRoleComponent,canActivate: [AuthGuard] },
+  { path: "view-points", component: ViewPointsComponent,canActivate: [AuthGuard] },
+  { path: "agent-detail", component: AgentDetailComponent,canActivate: [AuthGuard] },
+  { path: "add-points", component: AddPointsComponent,canActivate: [AuthGuard] },
+  { path: "employee-listing", component: EmployeeListingComponent,canActivate: [AuthGuard] },
+  { path: "employee-reward-status", component: EmployeeRewardStatusComponent,canActivate: [AuthGuard] },
+  { path: "add-employee", component: AddEmployeeComponent,canActivate: [AuthGuard] },
+  { path: "edit-employee/:id", component: EditEmployeeComponent,canActivate: [AuthGuard] },
+  { path: "event-listing", component: EventListingComponent,canActivate: [AuthGuard] },
+  { path: "event-detail", component: EventDetailComponent,canActivate: [AuthGuard] },
+  { path: "create-event", component: CreateEventComponent,canActivate: [AuthGuard] },
+  { path: "create-event-category", component: CreateEventCategoryComponent,canActivate: [AuthGuard] },
+  { path: "create-product", component: CreateProductComponent,canActivate: [AuthGuard] },
+  { path: "create-product-category", component: CreateProductCategoryComponent,canActivate: [AuthGuard] },
+  { path: "cart-notification", component: CartNotificationComponent,canActivate: [AuthGuard] },
+  { path: "access-cart", component: CartAccessComponent,canActivate: [AuthGuard] },
+  { path: "franchise-manager", component: FranchiseManagerComponent,canActivate: [AuthGuard] },
+  { path: "products", component: ProductsComponent,canActivate: [AuthGuard] },
+  { path: "product-detail", component: ProductDetailComponent,canActivate: [AuthGuard] },
+  { path: "product-cart", component: ProductCartComponent,canActivate: [AuthGuard] },
 
   {
     path: "basic-ui",

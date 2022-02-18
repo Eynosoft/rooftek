@@ -68,4 +68,38 @@ export class EventService {
   }
   /**********************************************************************************/
   /**********************************************************************************/
+  /**
+   * Add new event record
+   * 
+   * @param (formdata)
+   * @returns (json)
+   */
+   addEvent(categoryId: string,
+    name: string,
+    passportRequired: boolean,
+    startDate: string,
+    endDate: string,
+    summary: string,
+    description: string,
+    pointCost: number,
+    quantity: number,
+    createdBy: string): Observable<any> {
+    //if(typeof hireDate == 'undefined') {
+    //  hireDate = '';
+    //}  
+    
+    return this.httpClient.post(RESTAPI + '/advantages/purchasables/events',{
+      categoryId,
+      name,
+      passportRequired,
+      startDate,
+      endDate,
+      summary,
+      description,
+      pointCost,
+      quantity,
+      createdBy},httpOptions);
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
+import { TokenStorageService } from './services/token-storage/token-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,13 @@ import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConf
 })
 export class AppComponent implements OnInit{
   title = 'demo1';
-
+  isLoggedIn = false;
   showSidebar: boolean = true;
   showNavbar: boolean = true;
   showFooter: boolean = true;
   isLoading: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private tokenStorageService: TokenStorageService) {
     
     // Removing Sidebar, Navbar, Footer for Documentation, Error and Auth pages
     router.events.forEach((event) => { 
@@ -51,10 +52,16 @@ export class AppComponent implements OnInit{
       }
     });
   }
-
-
-
+  /**********************************************************************************/
+  /**********************************************************************************/
+  /**
+   * Calls on initialization
+   */
   ngOnInit() {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (!this.isLoggedIn) {
+      this.router.navigate(['//user-pages/login']);
+    } 
     // Scroll to top after route change
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
@@ -63,4 +70,6 @@ export class AppComponent implements OnInit{
       window.scrollTo(0, 0);
     });
   }
+  /**********************************************************************************/
+  /**********************************************************************************/
 }

@@ -11,7 +11,6 @@ import { RolesService } from 'src/app/services/roles/roles.service';
 export class AgentListingComponent implements OnInit {
   filterTerm: string;
   agentsData: any;
-  agentId:any;
   currentIndex = -1;
   title = '';
   page = 1;
@@ -23,8 +22,10 @@ export class AgentListingComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveRoles();
-    this.retrieveAgents();
+    
+    //this.retrieveAgents(); 
   }
+  
   /**********************************************************************************/
   /**********************************************************************************/
   /**
@@ -58,9 +59,10 @@ export class AgentListingComponent implements OnInit {
      * @param (any)
      * @returns (array)
     */
-     retrieveAgents(): void {
+     retrieveAgents(agentId: any): void {
       const params = this.getRequestParams(this.title, this.page, this.pageSize);
-      this.agentService.fetchAgents(params,this.agentId)
+      
+      this.agentService.fetchAgents(params,agentId)
         .subscribe(
           res => {
             console.log(res);
@@ -82,7 +84,7 @@ export class AgentListingComponent implements OnInit {
     */
      handlePageChange(event: number): void {
       this.page = event;
-      this.retrieveAgents();
+      this.retrieveRoles();
     }
     /**********************************************************************************/
     /**********************************************************************************/
@@ -94,7 +96,7 @@ export class AgentListingComponent implements OnInit {
     */
      searchTitle(): void {
       this.page = 1;
-      this.retrieveAgents();
+      this.retrieveRoles();
     }
     /**********************************************************************************/
     /**********************************************************************************/
@@ -110,12 +112,14 @@ export class AgentListingComponent implements OnInit {
           res => {
             if(res.length) {
               for (var val of res) {
-                if(res.Name == "Agent") {
-                  this.agentId = res.Id;  
+                if(val.Name == "Agent") {
+                  this.retrieveAgents(val.Id);
+                  
                 }
               }
             }
             console.log(res);
+            
           },
           err => {
             console.log(err);
@@ -123,4 +127,5 @@ export class AgentListingComponent implements OnInit {
     }
     /**********************************************************************************/
     /**********************************************************************************/
-}
+    
+} 

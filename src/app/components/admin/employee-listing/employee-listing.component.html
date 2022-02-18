@@ -6,9 +6,9 @@
     <div class="filterBy_col">
         <label>Filter by Franchise</label>
         <span class="filterDropdown">
-            <select [(ngModel)]="query" class="form-control">
+            <select [(ngModel)]="query" (change)="search($event.target.value)" id="franchiseList" class="form-control">
                 <option>Select Franchise</option>
-                <option *ngFor ="let franchise of franchiseData" [ngValue]="franchise.Id">{{franchise.Name}}</option>
+                <option *ngFor ="let franchise of franchiseData" [value]="franchise.Id">{{franchise.Name}}</option>
             </select>
         </span>
     </div>
@@ -20,11 +20,10 @@
         <div class="card filter_checkbox_wrapper py-4 px-4">
             <div class="card-body">
                 <h5 class="card-title">Filter By Franchise Name</h5>
-
                 <div class="filter_checkbox_section">
                     <ul class="list-inline filter_listing">
                         <li *ngFor="let franchise of franchiseData"><span class="checkbox_item">
-                            <input type="checkbox" [(ngModel)]="query" value="{{franchise.Id}}"/>
+                            <input type="checkbox" name="franchiseMList" (change)="searchMList($event,franchise)" [(ngModel)]="franchise.isChecked" value="{{franchise.Id}}"/>
                         </span> {{franchise.Name}}</li>
                         
                     </ul>
@@ -57,7 +56,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let employee of employeeData | searchFilter: query | paginate : {
+                            <tr *ngFor="let employee of employeeData | paginate : {
                                     itemsPerPage: pageSize,
                                     currentPage: page,
                                     totalItems: count

@@ -100,7 +100,7 @@
                                 <label>Hire Date</label>
                                 <input type="text" class="form-control" formControlName ="hireDate" id="hireDate" placeholder="Enter Hire Date yyyy-mm-dd" [(ngModel)]="modelHDate" ngbDatepicker #hireDate="ngbDatepicker" [ngClass]="{'is-invalid': submitted && f.hireDate.errors}">
                                 <div *ngIf="submitted && f.hireDate.errors" class="text-danger">
-                                    <div *ngIf="f.hireDate.errors.required">Hire Date is required</div>
+                                <div *ngIf="f.hireDate.errors.required">Hire Date is required</div>
                                 </div>
                                 <button class="btn btn-outline-secondary calendar" (click)="hireDate.toggle()" type="button"></button>
                             </div>

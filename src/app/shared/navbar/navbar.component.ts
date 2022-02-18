@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { TokenStorageService } from 'src/app/services/token-storage/token-storage.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -11,7 +12,7 @@ export class NavbarComponent implements OnInit {
   public iconOnlyToggled = false;
   public sidebarToggled = false;
   
-  constructor(config: NgbDropdownConfig) {
+  constructor(config: NgbDropdownConfig, private tokenStorageService: TokenStorageService, private authService: AuthService) {
     config.placement = 'bottom-right';
   }
 
@@ -42,7 +43,11 @@ export class NavbarComponent implements OnInit {
       }
     }
   }
-
+  logout(): void {
+    this.tokenStorageService.signOut();
+    this.authService.logout();
+    //this.router.navigateByUrl('client-login');
+  }
   // toggle right sidebar
   // toggleRightSidebar() {
   //   document.querySelector('#right-sidebar').classList.toggle('open');

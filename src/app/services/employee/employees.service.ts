@@ -68,6 +68,32 @@ export class EmployeesService {
   /**********************************************************************************/
   /**********************************************************************************/
   /**
+   * Fetch employee records by id
+   * 
+   * @param (any)
+   * @returns (object)
+   */
+   searchEmployeeByFranchiseId(franchiseId: any,params: any): Observable<any> {
+    return this.httpClient.get<any>(RESTAPI+'/employees/by-franchise/'+franchiseId,{ params }).pipe(catchError(this.errorHandler)) 
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
+  /**
+   * Fetch employee records by mulitple franchise id
+   * 
+   * @param (array)
+   * @returns (object)
+   */
+   searchEmployeeByFranchiseMId(params: any): Observable<any> {
+    var page = params['page'];
+    var size = params['size'];
+    var franchiseIds = params['franchiseIds'];
+    
+    return this.httpClient.post(RESTAPI + '/employees/by-franchises',{page,size,franchiseIds},httpOptions).pipe(catchError(this.errorHandler));
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
+  /**
    * Delete employee by id
    * 
    * @param (id)

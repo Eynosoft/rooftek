@@ -1,4 +1,4 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/services/events/event.service';
 import { Events } from 'src/app/interface/events';
 import { Router } from '@angular/router';

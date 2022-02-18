@@ -4,7 +4,7 @@
     </h3>
 
     <div class="filterBy_col">
-        <a class="btn btn-danger btn-sm"  routerLink="/create-event-category" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-plus"></i> Add Category</a>
+        <a class="btn btn-danger btn-sm" routerLink="/create-event-category" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-plus"></i> Add Category</a>
     </div>
 </div>
 
@@ -15,12 +15,15 @@
             <div class="card-body table_view_wrapper py-4 px-4">
                 <!--<h4 class="card-title">Points Status</h4>-->
 
-                <form class="forms-sample">
+                <form [formGroup]="frmCreateEvent" (ngSubmit)="createEvent()" class="forms-sample">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Event  Title  <span>*</span></label>
-                                <input type="text" class="form-control" id="" placeholder="Enter event title">
+                                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter event title" [ngClass]="{'is-invalid': submitted && f.name.errors}">
+                                <div *ngIf="submitted && f.name.errors" class="text-danger">
+                                    <div *ngIf="f.name.errors.required">Event title is required</div>
+                                </div>    
                             </div>
                         </div>
                     </div>
@@ -29,118 +32,171 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Estimated Point Cost  <span>*</span></label>
-                                <input type="text" class="form-control" id="" placeholder="Enter estimated point cost">
+                                <input type="text" class="form-control" id="pointCost" formControlName="pointCost" placeholder="Enter estimated point cost" [ngClass]="{'is-invalid': submitted && f.pointCost.errors}">
+                                <div *ngIf="submitted && f.pointCost.errors" class="text-danger">
+                                    <div *ngIf="f.pointCost.errors.required">Estimated Point Cost is required</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Start Date <span>*</span></label>
-                                <input type="date" class="form-control" id="pointValue" placeholder="Choose date">
+                                <label>Passport Required <span>*</span></label>
+                                <input type="date" class="form-control" id="passportRequired" formControlName="passportRequired" placeholder="Choose date" [(ngModel)]="modelSDate" ngbDatepicker #startDate="ngbDatepicker" [ngClass]="{'is-invalid': submitted && f.startDate.errors}">
+                                <div *ngIf="submitted && f.startDate.errors" class="text-danger">
+                                    <div *ngIf="f.startDate.errors.required">Start Date is required</div>
+                                </div>
+                                <button class="btn btn-outline-secondary calendar" (click)="startDate.toggle()" type="button"></button>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Start Time  <span>*</span></label>
-                                <input type="time" class="form-control" id="pointValue" placeholder="00:00 AM">
+                                <label>Start Date <span>*</span></label>
+                                <input type="date" class="form-control" id="startDate" formControlName="startDate" placeholder="Choose date" [(ngModel)]="modelSDate" ngbDatepicker #startDate="ngbDatepicker" [ngClass]="{'is-invalid': submitted && f.startDate.errors}">
+                                <div *ngIf="submitted && f.startDate.errors" class="text-danger">
+                                    <div *ngIf="f.startDate.errors.required">Start Date is required</div>
+                                </div>
+                                <button class="btn btn-outline-secondary calendar" (click)="startDate.toggle()" type="button"></button>
                             </div>
                         </div>
+                        <!--<div class="col-md-6">
+                            <div class="form-group">
+                                <label>Start Time  <span>*</span></label>
+                                <input type="time" class="form-control" formControlName="startTime" id="startTime" placeholder="00:00 AM" [ngClass]="{'is-invalid': submitted && f.startTime.errors}">
+                                <div *ngIf="submitted && f.startTime.errors" class="text-danger">
+                                    <div *ngIf="f.startTime.errors.required">Start Time is required</div>
+                                </div>
+                            </div>
+                        </div>-->
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>End Date <span>*</span></label>
-                                <input type="date" class="form-control" id="pointValue" placeholder="Choose date">
+                                <input type="date" class="form-control" formControlName="endDate" id="endDate" placeholder="Choose date" [ngClass]="{'is-invalid': submitted && f.endDate.errors}">
+                                <div *ngIf="submitted && f.endDate.errors" class="text-danger">
+                                    <div *ngIf="f.endDate.errors.required">End Date is required</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <!--<div class="col-md-6">
                             <div class="form-group">
                                 <label>End Time  <span>*</span></label>
-                                <input type="time" class="form-control" id="pointValue" placeholder="00:00 AM">
+                                <input type="time" class="form-control" formControlName="endTime" id="endTime" placeholder="00:00 AM" [ngClass]="{'is-invalid': submitted && f.endTime.errors}">
+                                <div *ngIf="submitted && f.endTime.errors" class="text-danger">
+                                    <div *ngIf="f.endTime.errors.required">End Time is required</div>
+                                </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
 
-                    <div class="row">
+                    <!--<div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Event Location <span>*</span></label>
-                                <textarea class="form-control" id="notes" rows="6"></textarea>
+                                <textarea class="form-control" formControlName ="eventLocation" id="eventLocation" rows="6" [ngClass]="{'is-invalid': submitted && f.eventLocation.errors}"></textarea>
+                                <div *ngIf="submitted && f.eventLocation.errors" class="text-danger">
+                                    <div *ngIf="f.eventLocation.errors.required">Event Location is required</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
-                    <div class="row">
+                    <!--<div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Country <span>*</span></label>
-                                <select class="form-control" id="selectEmployee">
+                                <select class="form-control" formControlName ="country" id="country" [ngClass]="{'is-invalid': submitted && f.country.errors}">
                                     <option>--Select Country--</option>
                                     <option>United State</option>
                                     <option>UK</option>
                                     <option>India</option>
                                 </select>
+                                <div *ngIf="submitted && f.country.errors" class="text-danger">
+                                    <div *ngIf="f.country.errors.required">Country is required</div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>State  <span>*</span></label>
-                                <select class="form-control" id="selectEmployee">
+                                <select class="form-control" formControlName="state" id="state" [ngClass]="{'is-invalid': submitted && f.state.errors}">
                                     <option>--Select State--</option>
                                     <option>Alabama</option>
                                     <option>Alaska</option>
                                     <option>Arizona</option>
                                 </select>
+                                <div *ngIf="submitted && f.state.errors" class="text-danger">
+                                    <div *ngIf="f.state.errors.required">State is required</div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>City  <span>*</span></label>
-                                <select class="form-control" id="selectEmployee">
+                                <select class="form-control" formControlName="city" id="city" [ngClass]="{'is-invalid': submitted && f.city.errors}">
                                     <option>--Select City--</option>
                                     <option>New York</option>
                                     <option>Los Angeles</option>
                                     <option>Houston</option>
                                 </select>
+                                <div *ngIf="submitted && f.city.errors" class="text-danger">
+                                    <div *ngIf="f.city.errors.required">State is required</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Event Category <span>*</span></label>
-                                <select class="form-control" id="selectEmployee">
+                                <select class="form-control" formControlName="categoryId" id="categoryId" [ngClass]="{'is-invalid': submitted && f.categoryId.errors}">
                                     <option>--Select Category--</option>
-                                    <option>Category name</option>
-                                    <option>Category name</option>
-                                    <option>Category name</option>
-                                    <option>Category name</option>
+                                    <option *ngFor ="let eventCategories of eventCategoriesServices" [ngValue]="eventCategories.Id">{{eventCategories.Name}}</option>
                                 </select>
+                                <div *ngIf="submitted && f.categoryId.errors" class="text-danger">
+                                    <div *ngIf="f.categoryId.errors.required">Category is required</div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Total Seats  <span>*</span></label>
-                                <input type="number" class="form-control" id="pointValue" placeholder="500 Seats">
+                                <input type="number" formControlName="quantity" class="form-control" id="quantity" placeholder="500 Seats" [ngClass]="{'is-invalid': submitted && f.quantity.errors}">
+                                <div *ngIf="submitted && f.quantity.errors" class="text-danger">
+                                    <div *ngIf="f.quantity.errors.required">Total Seats is required</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Summary <span>*</span></label>
+                                <textarea class="form-control" id="summary" rows="8" formControlName="summary" [ngClass]="{'is-invalid': submitted && f.summary.errors}"></textarea>
+                                <div *ngIf="submitted && f.summary.errors" class="text-danger">
+                                    <div *ngIf="f.summary.errors.required">Summary is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Description <span>*</span></label>
-                                <textarea class="form-control" id="notes" rows="8"></textarea>
+                                <textarea class="form-control" id="description" rows="8" formControlName="description" [ngClass]="{'is-invalid': submitted && f.description.errors}"></textarea>
+                                <div *ngIf="submitted && f.description.errors" class="text-danger">
+                                    <div *ngIf="f.description.errors.required">Description is required</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
+                    <!--<div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Upload Event Gallery Images <span>*</span></label>
@@ -155,7 +211,7 @@
                         </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="row">
                         <div class="col-md-12">

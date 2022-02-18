@@ -13,8 +13,10 @@ import { Router } from '@angular/router';
 export class EmployeeListingComponent implements OnInit {
   searchFilter: any = '';
   employeeData: any;
-  dtOptions: DataTables.Settings = {};
+  tempArr: any = [];
+  allEmployeeData: any;
   franchiseData: any;
+  franchiseDataID: string = '';
   filterTerm: string;
   currentIndex = -1;
   title = '';
@@ -67,6 +69,7 @@ export class EmployeeListingComponent implements OnInit {
       .subscribe(
         res => {
           this.employeeData = res.rows;
+          this.allEmployeeData = this.employeeData; 
           this.count = res.count;
         },
         err => {
@@ -104,7 +107,12 @@ export class EmployeeListingComponent implements OnInit {
   */
   handlePageChange(event: number): void {
     this.page = event;
-    this.retrieveEmployees();
+    if(this.franchiseDataID) {
+      this.search(this.franchiseDataID);
+    } else {
+      this.retrieveEmployees();
+    }
+    
   }
   /**********************************************************************************/
   /**********************************************************************************/
@@ -117,7 +125,12 @@ export class EmployeeListingComponent implements OnInit {
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
     this.page = 1;
-    this.retrieveEmployees();
+    if(this.franchiseDataID) {
+      this.search(this.franchiseDataID);
+    } else {
+      this.retrieveEmployees();
+    }
+    
   }
   /**********************************************************************************/
   /**********************************************************************************/
@@ -127,10 +140,17 @@ export class EmployeeListingComponent implements OnInit {
    * @param (any)
    * @returns (json)
   */
-   handleFranchiseChange(event: any): void {
+  handleFranchiseChange(event: any): void {
     this.title = event.target.value;
     this.page = 1;
-    this.retrieveEmployees();
+    if(this.franchiseDataID) {
+      this.search(this.franchiseDataID);
+    } else if(this.tempArr.length > 0) {
+      this.searchMList(null,null);
+    } else {
+      this.retrieveEmployees();
+    }
+    
   }
   /**********************************************************************************/
   /**********************************************************************************/
@@ -147,12 +167,76 @@ export class EmployeeListingComponent implements OnInit {
   /**********************************************************************************/
   /**********************************************************************************/
   /**
+   * Search by franchise Id
+   * 
+   * @param (string)
+   * return(null) 
+   */
+  search(value: string): void {
+    console.log('Single Franchise ID='+value);
+    this.franchiseDataID = value;
+    const params = this.getRequestParams(this.title, this.page, this.pageSize);
+    this.employeeService.searchEmployeeByFranchiseId(value,params)
+      .subscribe(
+        res => {
+          this.employeeData = res.rows;
+          this.allEmployeeData = this.employeeData; 
+          this.count = res.count;
+        },
+        err => {
+          console.log(err);
+        });
+    //this.employeeData = this.allEmployeeData.filter((val) => val.name.toLowerCase().includes(value));
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
+  /**
+   * Search with multiple franchise IDs
+   * 
+   * param (array)
+   * return(null)
+   */
+  searchMList($event,franchise) : void {
+    if ($event.target.checked) {
+      this.tempArr.push(franchise.Id);
+    } else {
+      let i: number = 0;
+      this.tempArr.forEach((item: any) => {
+        console.log(item);
+        if (item == franchise.Id) {
+          this.tempArr.splice(i, 1);
+          return;
+        }
+        i++;
+      });
+    }
+    if(this.tempArr.length == 0) {
+      this.retrieveEmployees();
+      return;
+    }
+    const params = this.getRequestParams(this.title, this.page, this.pageSize);
+    params['franchiseIds'] = this.tempArr;
+    this.employeeService.searchEmployeeByFranchiseMId(params)
+      .subscribe(
+        res => {
+          this.employeeData = res.rows;
+          this.allEmployeeData = this.employeeData; 
+          this.count = res.count;
+        },
+        err => {
+          console.log(err);
+        });
+    console.log(this.tempArr);
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
+  /**
    * Delete employee by id
    * 
    * @param (number)
    * @returns (json)
   */
-   deleteEmployee(id:number) :void {
+  /* deleteEmployee(id:number) :void {
     this.employeeService.deleteEmployeeById(id)
       .subscribe(
         res => {
@@ -162,7 +246,7 @@ export class EmployeeListingComponent implements OnInit {
         err => {
           console.log(err);
         });
-   }
+   }*/
   /**********************************************************************************/
   /**********************************************************************************/
 }
