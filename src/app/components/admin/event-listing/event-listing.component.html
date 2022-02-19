@@ -81,8 +81,8 @@
                                 <td><label _ngcontent-gsg-c7="" class="badge badge-info">Ongoing</label></td>
                                 <td>
                                     <span class="action_bar">
-                                        <a  routerLink="#" routerLinkActive="active" #blankPage="routerLinkActive" (click)="viewEvent(events.Id)" title="View"><i class="mdi mdi-eye"></i></a>
-                                        <a title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        <a routerLink="/event-detail/{{events.Id}}" routerLinkActive="active" #blankPage="routerLinkActive" title="View"><i class="mdi mdi-eye"></i></a>
+                                        <a routerLink="/edit-event/{{events.Id}}" routerLinkActive="active" #blankPage="routerLinkActive" title="Edit" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                         <!--<a title="Delete" href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>-->
                                     </span>
                                 </td>

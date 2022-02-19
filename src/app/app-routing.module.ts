@@ -24,6 +24,7 @@ import { ProductsComponent } from "./components/admin/products/products.componen
 import { ProductDetailComponent } from "./components/admin/product-detail/product-detail.component";
 import { ProductCartComponent } from "./components/admin/product-cart/product-cart.component";
 import { LoginComponent } from "./user-pages/login/login.component";
+import { EditEventComponent } from "./components/admin/edit-event/edit-event.component";
 const routes: Routes = [
   { path: "", redirectTo: "/user-pages/login", pathMatch: "full" },
   { path: "dashboard", component: DashboardComponent,canActivate: [AuthGuard],data:{title:'Advanced Idx Mls Solution'}},
@@ -37,8 +38,9 @@ const routes: Routes = [
   { path: "add-employee", component: AddEmployeeComponent,canActivate: [AuthGuard] },
   { path: "edit-employee/:id", component: EditEmployeeComponent,canActivate: [AuthGuard] },
   { path: "event-listing", component: EventListingComponent,canActivate: [AuthGuard] },
-  { path: "event-detail", component: EventDetailComponent,canActivate: [AuthGuard] },
+  { path: "event-detail/:id", component: EventDetailComponent,canActivate: [AuthGuard],data:{title:'Event Detail'} },
   { path: "create-event", component: CreateEventComponent,canActivate: [AuthGuard] },
+  { path: "edit-event/:id", component: EditEventComponent,canActivate: [AuthGuard],data:{title:'Edit Event'} },
   { path: "create-event-category", component: CreateEventCategoryComponent,canActivate: [AuthGuard] },
   { path: "create-product", component: CreateProductComponent,canActivate: [AuthGuard] },
   { path: "create-product-category", component: CreateProductCategoryComponent,canActivate: [AuthGuard] },

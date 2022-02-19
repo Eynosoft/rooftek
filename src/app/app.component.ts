@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConfigLoadEnd,ActivatedRoute  } from '@angular/router';
 import { TokenStorageService } from './services/token-storage/token-storage.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
   showFooter: boolean = true;
   isLoading: boolean;
 
-  constructor(private router: Router, private tokenStorageService: TokenStorageService) {
+  constructor(private router: Router, private tokenStorageService: TokenStorageService, private activatedRoute: ActivatedRoute) {
     
     // Removing Sidebar, Navbar, Footer for Documentation, Error and Auth pages
     router.events.forEach((event) => { 
@@ -54,6 +54,7 @@ export class AppComponent implements OnInit{
   }
   /**********************************************************************************/
   /**********************************************************************************/
+  
   /**
    * Calls on initialization
    */
@@ -69,6 +70,7 @@ export class AppComponent implements OnInit{
       }
       window.scrollTo(0, 0);
     });
+    
   }
   /**********************************************************************************/
   /**********************************************************************************/

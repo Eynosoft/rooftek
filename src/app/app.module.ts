@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'; 
@@ -44,6 +44,8 @@ import { ProductsComponent } from './components/admin/products/products.componen
 import { ProductDetailComponent } from './components/admin/product-detail/product-detail.component';
 import { ProductCartComponent } from './components/admin/product-cart/product-cart.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { EditEventComponent } from './components/admin/edit-event/edit-event.component';
+import { EventDetailComponent } from './components/admin/event-detail/event-detail.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     ProductsComponent,
     ProductDetailComponent,
     ProductCartComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    EditEventComponent,
+    EventDetailComponent
   ],
   imports: [
     HttpClientModule,
@@ -93,7 +97,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     DataTablesModule,
     
   ],
-  providers: [ThemeService,DatePipe,{
+  providers: [ThemeService,DatePipe,Title,{
     provide : HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi   : true,

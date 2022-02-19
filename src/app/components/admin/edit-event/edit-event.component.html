@@ -1,6 +1,6 @@
 <div class="page-header">
     <h3 class="page-title">
-        Create Event
+        {{pageTitle}}
     </h3>
 
     <div class="filterBy_col">
@@ -13,9 +13,7 @@
     <div class="col-12 grid-margin">
         <div class="card">
             <div class="card-body table_view_wrapper py-4 px-4">
-                <!--<h4 class="card-title">Points Status</h4>-->
-
-                <form [formGroup]="frmCreateEvent" (ngSubmit)="createEvent()" class="forms-sample">
+                <form [formGroup]="frmEditEvent" (ngSubmit)="editEvent()" class="forms-sample">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -65,15 +63,7 @@
                                 <button class="btn btn-outline-secondary calendar" (click)="startDate.toggle()" type="button"></button>
                             </div>
                         </div>
-                        <!--<div class="col-md-6">
-                            <div class="form-group">
-                                <label>Start Time  <span>*</span></label>
-                                <input type="time" class="form-control" formControlName="startTime" id="startTime" placeholder="00:00 AM" [ngClass]="{'is-invalid': submitted && f.startTime.errors}">
-                                <div *ngIf="submitted && f.startTime.errors" class="text-danger">
-                                    <div *ngIf="f.startTime.errors.required">Start Time is required</div>
-                                </div>
-                            </div>
-                        </div>-->
+                        
                     </div>
 
                     <div class="row">
@@ -87,73 +77,12 @@
                                 <button class="btn btn-outline-secondary calendar" (click)="endDate.toggle()" type="button"></button>
                             </div>
                         </div>
-                        <!--<div class="col-md-6">
-                            <div class="form-group">
-                                <label>End Time  <span>*</span></label>
-                                <input type="time" class="form-control" formControlName="endTime" id="endTime" placeholder="00:00 AM" [ngClass]="{'is-invalid': submitted && f.endTime.errors}">
-                                <div *ngIf="submitted && f.endTime.errors" class="text-danger">
-                                    <div *ngIf="f.endTime.errors.required">End Time is required</div>
-                                </div>
-                            </div>
-                        </div>-->
+                        
                     </div>
 
-                    <!--<div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Event Location <span>*</span></label>
-                                <textarea class="form-control" formControlName ="eventLocation" id="eventLocation" rows="6" [ngClass]="{'is-invalid': submitted && f.eventLocation.errors}"></textarea>
-                                <div *ngIf="submitted && f.eventLocation.errors" class="text-danger">
-                                    <div *ngIf="f.eventLocation.errors.required">Event Location is required</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
+                    
 
-                    <!--<div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Country <span>*</span></label>
-                                <select class="form-control" formControlName ="country" id="country" [ngClass]="{'is-invalid': submitted && f.country.errors}">
-                                    <option>--Select Country--</option>
-                                    <option>United State</option>
-                                    <option>UK</option>
-                                    <option>India</option>
-                                </select>
-                                <div *ngIf="submitted && f.country.errors" class="text-danger">
-                                    <div *ngIf="f.country.errors.required">Country is required</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>State  <span>*</span></label>
-                                <select class="form-control" formControlName="state" id="state" [ngClass]="{'is-invalid': submitted && f.state.errors}">
-                                    <option>--Select State--</option>
-                                    <option>Alabama</option>
-                                    <option>Alaska</option>
-                                    <option>Arizona</option>
-                                </select>
-                                <div *ngIf="submitted && f.state.errors" class="text-danger">
-                                    <div *ngIf="f.state.errors.required">State is required</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>City  <span>*</span></label>
-                                <select class="form-control" formControlName="city" id="city" [ngClass]="{'is-invalid': submitted && f.city.errors}">
-                                    <option>--Select City--</option>
-                                    <option>New York</option>
-                                    <option>Los Angeles</option>
-                                    <option>Houston</option>
-                                </select>
-                                <div *ngIf="submitted && f.city.errors" class="text-danger">
-                                    <div *ngIf="f.city.errors.required">State is required</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
+                    
 
                     <div class="row">
                         <div class="col-md-6">
@@ -201,33 +130,15 @@
                         </div>
                     </div>
 
-                    <!--<div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Upload Event Gallery Images <span>*</span></label>
-                        <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                            <span class="input-group-append">
-                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-
-                <button class="btn btn-dark btn-sm ml-2"><i class="mdi mdi-plus"></i> Add More</button>
-              </span>
-                        </div>
-                            </div>
-                        </div>
-                    </div>-->
-
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary mr-2">Create Event</button>
+                                <input type="hidden" id="createdBy" formControlName="createdBy" value=""/>
+                                <button type="submit" class="btn btn-primary mr-2">Edit Event</button>
                                 <button class="btn btn-dark">Cancel</button>
                             </div>
                         </div>
                     </div>
-
-
                 </form>
             </div>
         </div>

@@ -70,6 +70,7 @@ export class AddEmployeeComponent implements OnInit {
    * @returns ()
   */
   ngOnInit(): void {
+    this.selectToday();
     this.frmAddEmployee = this.formBuilder.group(
       {
         callToolsAgentId:[''],

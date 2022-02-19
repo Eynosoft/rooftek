@@ -84,9 +84,12 @@ export class EventService {
     pointCost: number,
     quantity: number,
     createdBy: string): Observable<any> {
-    //if(typeof hireDate == 'undefined') {
-    //  hireDate = '';
-    //}  
+    if(typeof startDate == 'undefined') {
+      startDate = '';
+    }
+    if(typeof endDate == 'undefined') {
+      endDate = '';
+    }  
     
     return this.httpClient.post(RESTAPI + '/advantages/purchasables/events',{
       categoryId,
@@ -98,8 +101,47 @@ export class EventService {
       description,
       pointCost,
       quantity,
-      createdBy},httpOptions);
+      createdBy},httpOptions).pipe(catchError(this.errorHandler)) ;
   }
   /**********************************************************************************/
   /**********************************************************************************/
+  /**
+   * Edit event record
+   * 
+   * @param (formdata)
+   * @returns (json)
+   */
+   editEvent(Id: string,
+    categoryId: string,
+    name: string,
+    passportRequired: boolean,
+    startDate: string,
+    endDate: string,
+    summary: string,
+    description: string,
+    pointCost: number,
+    quantity: number,
+    createdBy: string): Observable<any> {
+    if(typeof startDate == 'undefined') {
+      startDate = '';
+    }
+    if(typeof endDate == 'undefined') {
+      endDate = '';
+    }  
+    
+    return this.httpClient.put(RESTAPI + '/advantages/purchasables/events/'+Id,{
+      categoryId,
+      name,
+      passportRequired,
+      startDate,
+      endDate,
+      summary,
+      description,
+      pointCost,
+      quantity,
+      createdBy},httpOptions).pipe(catchError(this.errorHandler)) ;
+  }
+  /**********************************************************************************/
+  /**********************************************************************************/
+
 }
